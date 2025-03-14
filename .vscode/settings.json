@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [
+        ".",
+        "src/test/java"
+    ],
+    "java.project.referencedLibraries": [
+        "/Users/jordic/Downloads/PràcticaOOP/lib/hamcrest-core-1.3.jar",
+        "/Users/jordic/Downloads/PràcticaOOP/lib/junit-4.13.2.jar"
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
