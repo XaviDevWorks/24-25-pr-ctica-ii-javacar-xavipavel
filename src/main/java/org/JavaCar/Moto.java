@@ -1,4 +1,5 @@
 package org.JavaCar;
 
-public class Moto {
+public class Moto extends Vehicle{
+    
 }
