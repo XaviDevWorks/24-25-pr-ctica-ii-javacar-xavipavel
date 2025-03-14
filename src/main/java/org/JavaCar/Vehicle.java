@@ -38,4 +38,7 @@ public abstract class Vehicle {
     public Roda[] getRodes(){
         return Rodes;
     }
+    public double calcularPreu(int dies){
+        return this.PreuBase*dies;
+    }
 }
