@@ -1,10 +1,16 @@
 package org.JavaCar;
 
 public class Motor {
-    String alimentacio;
-    double cilindrada;
-    public Motor(String alimentacio, double cil){
-        this.alimentacio = alimentacio;
-        this.cilindrada = cil;
+    String tipus;
+    int potencia;
+    public Motor(String tipus, int potencia){
+        this.tipus = tipus;
+        this.potencia = potencia;
+    }
+    public String getTipus(){
+        return tipus;
+    }
+    public int getPotencia(){
+        return potencia;
     }
 }
