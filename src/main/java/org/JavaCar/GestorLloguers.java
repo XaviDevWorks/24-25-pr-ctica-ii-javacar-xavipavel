@@ -1,5 +1,6 @@
 package org.JavaCar;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class GestorLloguers {
@@ -23,5 +24,16 @@ public class GestorLloguers {
             }
         }
         return total;
+    }
+
+    public static List<Vehicle> filtrarPerPreu(List<Vehicle> vehicles, double maxPreu){
+        List<Vehicle> llistaordenada = new java.util.ArrayList<Vehicle>();
+        for (int i = 0; i < vehicles.size() ; i++) {
+            if (vehicles.get(i).getPreuBase() > maxPreu){
+                llistaordenada.add(vehicles.get(i));
+            }
+        }
+        llistaordenada.sort(Comparator.comparingDouble(Vehicle::getPreuBase));
+        return llistaordenada;
     }
 }
