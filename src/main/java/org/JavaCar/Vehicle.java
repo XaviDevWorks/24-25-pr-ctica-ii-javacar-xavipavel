@@ -1,18 +1,18 @@
 package org.JavaCar;
 
 public abstract class Vehicle implements Llogable {
-    String Matricula;
-    String Marca;
-    String Model;
+    String matricula;
+    String marca;
+    String model;
     double PreuBase;
     Motor Motor;
     Roda[] Rodes;
     String EtiquetaAmbiental;
     
     public Vehicle(String Matr, String Marca, String Model, double preu,Motor Motor,Roda[] Rodes){
-        this.Matricula = Matr;
-        this.Marca = Marca;
-        this.Model = Model;
+        this.matricula = Matr;
+        this.marca = Marca;
+        this.model = Model;
         this.PreuBase = preu;
         this.Motor = Motor;
         this.Rodes = Rodes;
@@ -21,13 +21,13 @@ public abstract class Vehicle implements Llogable {
     }
 
     public String getMatricula(){
-        return Matricula;
+        return matricula;
     }
     public String getMarca(){
-        return Marca;
+        return marca;
     }
     public String getModel(){
-        return Model;
+        return model;
     }
     public int getPreuBase(){
         return (int) PreuBase;
