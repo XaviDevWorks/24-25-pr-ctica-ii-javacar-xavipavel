@@ -1,22 +1,44 @@
 package org.JavaCar;
 
-public abstract class Vehicle {
-    String Matricula;
-    String Marca;
-    String Model;
-    double PreuBase;
-    Motor Motor;
-    int Rodes;
-    String EtiquetaAmbiental;
+public abstract class Vehicle implements Llogable {
+    protected String matricula;
+    protected String marca;
+    protected String model;
+    protected double PreuBase;
+    protected Motor Motor;
+    protected Roda[] Rodes;
+    protected String EtiquetaAmbiental;
     
-    public Vehicle(String Matr, String Marca, String Model, double preu, Motor Motor,int Rodes, String etiqueta){
-        this.Matricula = Matr;
-        this.Marca = Marca;
-        this.Model = Model;
+    public Vehicle(String Matr, String Marca, String Model, double preu,Motor Motor,Roda[] Rodes){
+        this.matricula = Matr;
+        this.marca = Marca;
+        this.model = Model;
         this.PreuBase = preu;
         this.Motor = Motor;
         this.Rodes = Rodes;
-        this.EtiquetaAmbiental = etiqueta;
+        //this.EtiquetaAmbiental = etiqueta;
 
+    }
+
+    public String getMatricula(){
+        return matricula;
+    }
+    public String getMarca(){
+        return marca;
+    }
+    public String getModel(){
+        return model;
+    }
+    public int getPreuBase(){
+        return (int) PreuBase;
+    }
+    public Motor getMotor(){
+        return Motor;
+    }
+    public Roda[] getRodes(){
+        return Rodes;
+    }
+    public double calcularPreu(int dies){
+        return this.PreuBase*dies;
     }
 }
