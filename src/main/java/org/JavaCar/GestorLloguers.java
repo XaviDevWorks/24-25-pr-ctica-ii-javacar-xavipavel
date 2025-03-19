@@ -29,7 +29,7 @@ public class GestorLloguers {
     public static List<Vehicle> filtrarPerPreu(List<Vehicle> vehicles, double maxPreu){
         List<Vehicle> llistaordenada = new java.util.ArrayList<Vehicle>();
         for (int i = 0; i < vehicles.size() ; i++) {
-            if (vehicles.get(i).getPreuBase() > maxPreu){
+            if (vehicles.get(i).getPreuBase() <= maxPreu){
                 llistaordenada.add(vehicles.get(i));
             }
         }

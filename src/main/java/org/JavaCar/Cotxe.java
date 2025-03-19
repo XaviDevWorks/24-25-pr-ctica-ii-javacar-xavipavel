@@ -10,4 +10,5 @@ public class Cotxe extends Vehicle implements Llogable{
     public double calcularPreu(int dies){
         return getPreuBase()*dies;
     }
+
 }
