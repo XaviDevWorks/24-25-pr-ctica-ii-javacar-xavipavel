@@ -1,0 +1,56 @@
+Vehicle: Furgoneta
+Tipus(Vehicle): Matricula: 5566PQR
+Marca: Iveco
+Model: Daily
+PreuBase: 55
+Tipus(Motor): Gasolina
+Potencia(Motor): 120
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Capacitat MAX:1200
+
+Vehicle: Furgoneta
+Tipus(Vehicle): Matricula: 3344MNO
+Marca: Mercedes
+Model: Vito
+PreuBase: 50
+Tipus(Motor): Gasolina
+Potencia(Motor): 120
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Capacitat MAX:900
+
+Vehicle: Cotxe
+Tipus(Vehicle): Matricula: 1234ABC
+Marca: Toyota
+Model: Corolla
+PreuBase: 30
+Tipus(Motor): Gasolina
+Potencia(Motor): 120
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Nº Plaçes:5
+
+Vehicle: Moto
+Tipus(Vehicle): Matricula: 5678DEF
+Marca: Yamaha
+Model: R6
+PreuBase: 25
+Tipus(Motor): Gasolina
+Potencia(Motor): 80
+Roda(marca): Pirelli
+Roda(Diametre): 16.0
+Roda(marca): Pirelli
+Roda(Diametre): 16.0
+Cilindrada:600
+
