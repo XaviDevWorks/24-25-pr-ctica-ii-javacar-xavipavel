@@ -8,6 +8,7 @@ public abstract class Vehicle implements Llogable {
     protected Motor Motor;
     protected Roda[] Rodes;
     protected String EtiquetaAmbiental;
+    protected boolean disponibilidad = true;
     
     public Vehicle(String Matr, String Marca, String Model, double preu,Motor Motor,Roda[] Rodes){
         this.matricula = Matr;
@@ -42,8 +43,9 @@ public abstract class Vehicle implements Llogable {
         return this.PreuBase*dies;
     }
 
-    public void printVehicle(){
-        String form="Matricula: "+ getMatricula()+"\n" +
+    public String printVehicle(){
+        String form="Tipus(Vehicle): "+
+                "Matricula: "+ getMatricula()+"\n" +
                                    "Marca: "+getMarca()+"\n" +
                                    "Model: "+getModel()+"\n" +
                                    "PreuBase: "+getPreuBase()+"\n" +
@@ -53,5 +55,6 @@ public abstract class Vehicle implements Llogable {
             form+="Roda(marca): "+i.getMarca()+"\nRoda(Diametre): "+i.getDiametre()+"\n";
         }
         System.out.println(form);
+        return form;
     }
 }
