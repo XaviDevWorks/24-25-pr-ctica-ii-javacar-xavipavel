@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Main {
     public static Scanner input = new Scanner(System.in);
     public static DataHandlers dh = new DataHandlers();
+    public static String loggedUser="";
     public static void main(String[] args) {
         /*
         DataHandlers dth = new DataHandlers();
@@ -48,8 +49,13 @@ public class Main {
                         Menu();
                         break;
                     case 2:
-                        if (dh.Login()){
+                        Object[] res = dh.Login();
+
+                        if ((boolean)res[0]){
+                            loggedUser=(String)res[1];
                             System.out.println("succesfull Login");
+                            System.out.println("Wellecome user "+ (String) res[1]);
+
                         }else{
                             Menu();
                         }

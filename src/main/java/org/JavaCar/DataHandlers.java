@@ -106,11 +106,12 @@ public class DataHandlers {
         }
     }
 
-    public boolean Login(){
+    public Object[] Login(){
         File registration = new File(auth);
         try (BufferedReader br = new BufferedReader(new FileReader(registration))) {
             if(registration.exists()){
                 boolean userfound = false;
+                String userLogged="";
                 System.out.println("Enter your UserName");
                 String username = input.nextLine();
                 System.out.println("Enter your Password");
@@ -122,12 +123,13 @@ public class DataHandlers {
                     String aux = line[1];
                     if (line[0].equals(username) && (aux.equals(passwd))){
                         userfound = true;
+                        userLogged=username;
                         break;
                     }
 
                 }
                 br.close();
-                return userfound;
+                return new Object[]{userfound,userLogged};
             }else{
                 registration.createNewFile();
                 Login();
@@ -140,6 +142,6 @@ public class DataHandlers {
         } catch(Exception e){
             System.out.println(e.toString());
         }
-        return false;
+        return new Object[]{false,""};
     }
 }
