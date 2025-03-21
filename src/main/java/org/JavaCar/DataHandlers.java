@@ -2,9 +2,12 @@ package org.JavaCar;
 
 import java.io.*;
 import java.util.List;
+import java.util.Scanner;
 
 public class DataHandlers {
     String projectURL = "src/main/java/org/JavaCar/carStock.txt";
+    String auth = "src/main/java/org/JavaCar/auth.txt";
+    Scanner input = new Scanner(System.in);
 
     public void saveStock(List<Vehicle> vehicle) {
         File cochesStock = new File(projectURL);
@@ -64,5 +67,47 @@ public class DataHandlers {
             throw new RuntimeException(e);
         }
 
+    }
+
+
+    public void RegisterUser(){
+        File registration = new File(auth);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(registration, true))) {
+            boolean registrationloop = true;
+            while (registrationloop){
+                System.out.println("Enter a User Name");
+                String username = input.nextLine();
+                System.out.println("Enter "+username+"'s password");
+                String passwd1 = input.nextLine();
+                System.out.println("Repeat the password");
+                String passwd2 = input.nextLine();
+                if (passwd1.equals(passwd2)){
+                    System.out.println("Creating user "+ username);
+                    writer.write(username+"|"+passwd1.hashCode());
+                    registrationloop=false;
+                }else{
+                    System.out.println("User or password are wrong");
+                }
+            }
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+
+    public void Login(){
+        File registration = new File(auth);
+        try (BufferedReader br = new BufferedReader(new FileReader(projectURL))) {
+            boolean loginloop = true;
+            while (br.readLine() != null){
+                while (loginloop){
+                    
+                }
+            }
+
+
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
     }
 }
