@@ -1,5 +1,5 @@
 Vehicle: Furgoneta
-Tipus(Vehicle): Matricula: 5566PQR
+Matricula: 5566PQR
 Marca: Iveco
 Model: Daily
 PreuBase: 55
@@ -12,7 +12,7 @@ Roda(Diametre): 17.0
 Capacitat MAX:1200
 
 Vehicle: Furgoneta
-Tipus(Vehicle): Matricula: 3344MNO
+Matricula: 3344MNO
 Marca: Mercedes
 Model: Vito
 PreuBase: 50
@@ -25,7 +25,7 @@ Roda(Diametre): 17.0
 Capacitat MAX:900
 
 Vehicle: Cotxe
-Tipus(Vehicle): Matricula: 1234ABC
+Matricula: 1234ABC
 Marca: Toyota
 Model: Corolla
 PreuBase: 30
@@ -42,7 +42,7 @@ Roda(Diametre): 17.0
 Nº Plaçes:5
 
 Vehicle: Moto
-Tipus(Vehicle): Matricula: 5678DEF
+Matricula: 5678DEF
 Marca: Yamaha
 Model: R6
 PreuBase: 25

@@ -44,8 +44,7 @@ public abstract class Vehicle implements Llogable {
     }
 
     public String printVehicle(){
-        String form="Tipus(Vehicle): "+
-                "Matricula: "+ getMatricula()+"\n" +
+        String form="Matricula: "+ getMatricula()+"\n" +
                                    "Marca: "+getMarca()+"\n" +
                                    "Model: "+getModel()+"\n" +
                                    "PreuBase: "+getPreuBase()+"\n" +
