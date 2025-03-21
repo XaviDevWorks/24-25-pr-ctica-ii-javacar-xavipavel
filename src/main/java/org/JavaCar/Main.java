@@ -46,7 +46,11 @@ public class Main {
                     Menu();
                     break;
                 case 2:
-
+                    if (dh.Login()){
+                        System.out.println("succesfull Login");
+                    }else{
+                        Menu();
+                    }
                     break;
                 default:
                     System.out.println("Opció no valida");
