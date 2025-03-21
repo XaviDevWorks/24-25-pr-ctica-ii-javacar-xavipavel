@@ -28,7 +28,6 @@ public class Main {
             System.out.println("Vehicle type: " + vehicle.getClass().getName());
         }
         dth.saveStock(aux);
-
          */
         Menu();
     }
@@ -88,6 +87,7 @@ public class Main {
                 int option = input.nextInt();
                 switch (option){
                     case 1:
+
                         break;
                     case 2:
                         break;
