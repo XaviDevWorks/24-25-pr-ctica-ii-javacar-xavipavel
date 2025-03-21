@@ -55,7 +55,11 @@ public class Main {
                             loggedUser=(String)res[1];
                             System.out.println("succesfull Login");
                             System.out.println("Wellecome user "+ (String) res[1]);
+                            if(loggedUser.equals("admin")){
 
+                            }else{
+                                User_logged_Menu();
+                            }
                         }else{
                             Menu();
                         }
@@ -74,6 +78,31 @@ public class Main {
 
     }
 
+    public static void User_logged_Menu(){
+        boolean program = true;
+        while (program){
+            try{
+                System.out.println("1-Comprar Vehicle\n" +
+                                           "2-Llogar Vehicle");
+                input.reset();
+                int option = input.nextInt();
+                switch (option){
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        System.out.println("Invalid option");
+                }
+            }catch (InputMismatchException e){
+                System.out.println("wrong data entered");
+            }
+
+
+        }
+
+
+    }
 
 
 }
