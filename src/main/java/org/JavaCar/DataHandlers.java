@@ -2,9 +2,12 @@ package org.JavaCar;
 
 import java.io.*;
 import java.util.List;
+import java.util.Scanner;
 
 public class DataHandlers {
     String projectURL = "src/main/java/org/JavaCar/carStock.txt";
+    String auth = "src/main/java/org/JavaCar/auth.txt";
+    Scanner input = new Scanner(System.in);
 
     public void saveStock(List<Vehicle> vehicle) {
         File cochesStock = new File(projectURL);
@@ -64,5 +67,81 @@ public class DataHandlers {
             throw new RuntimeException(e);
         }
 
+    }
+
+
+    public void RegisterUser(){
+        System.out.println("Register Triggered");
+        File registration = new File(auth);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(registration, true))) {
+            if (!registration.exists()){
+                System.out.println("Already a users file");
+            }else if (registration.exists()){
+                boolean registrationloop = true;
+                while (registrationloop){
+                    System.out.println("Enter a User Name");
+                    String username = input.nextLine();
+                    System.out.println("Enter "+username+"'s password");
+                    String passwd1 = input.nextLine();
+                    System.out.println("Repeat the password");
+                    String passwd2 = input.nextLine();
+                    if (passwd1.equals(passwd2)){
+                        System.out.println("Creating user "+ username);
+                        //writer.newLine();
+                        writer.write(username+"|"+passwd1.hashCode());
+                        writer.newLine();
+                        registrationloop=false;
+                    }else{
+                        System.out.println("User or password are wrong");
+                    }
+                }
+            }
+            writer.close();
+        }catch(FileNotFoundException e){
+            System.out.println("File not found");
+        } catch (IOException e){
+            System.out.println(e.toString());
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+
+    public Object[] Login(){
+        File registration = new File(auth);
+        try (BufferedReader br = new BufferedReader(new FileReader(registration))) {
+            if(registration.exists()){
+                boolean userfound = false;
+                String userLogged="";
+                System.out.println("Enter your UserName");
+                String username = input.nextLine();
+                System.out.println("Enter your Password");
+                String passwd = input.nextLine();
+                passwd = String.valueOf(passwd.hashCode());
+                String Line;
+                while ((Line = br.readLine()) != null){
+                    String[] line = Line.split("\\|");
+                    String aux = line[1];
+                    if (line[0].equals(username) && (aux.equals(passwd))){
+                        userfound = true;
+                        userLogged=username;
+                        break;
+                    }
+
+                }
+                br.close();
+                return new Object[]{userfound,userLogged};
+            }else{
+                registration.createNewFile();
+                Login();
+            }
+
+        }catch(FileNotFoundException e){
+            System.out.println("File not found");
+        } catch (IOException e){
+            System.out.println(e.toString());
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return new Object[]{false,""};
     }
 }

@@ -3,7 +3,7 @@ Tipus(Vehicle): Matricula: 5566PQR
 Marca: Iveco
 Model: Daily
 PreuBase: 55
-Tipus(Motor): Gasolina
+Tipus(Motor): GASOLINA
 Potencia(Motor): 120
 Roda(marca): Michelin
 Roda(Diametre): 17.0
@@ -16,7 +16,7 @@ Tipus(Vehicle): Matricula: 3344MNO
 Marca: Mercedes
 Model: Vito
 PreuBase: 50
-Tipus(Motor): Gasolina
+Tipus(Motor): GASOLINA
 Potencia(Motor): 120
 Roda(marca): Michelin
 Roda(Diametre): 17.0
@@ -29,7 +29,7 @@ Tipus(Vehicle): Matricula: 1234ABC
 Marca: Toyota
 Model: Corolla
 PreuBase: 30
-Tipus(Motor): Gasolina
+Tipus(Motor): GASOLINA
 Potencia(Motor): 120
 Roda(marca): Michelin
 Roda(Diametre): 17.0
@@ -46,7 +46,7 @@ Tipus(Vehicle): Matricula: 5678DEF
 Marca: Yamaha
 Model: R6
 PreuBase: 25
-Tipus(Motor): Gasolina
+Tipus(Motor): GASOLINA
 Potencia(Motor): 80
 Roda(marca): Pirelli
 Roda(Diametre): 16.0
