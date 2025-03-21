@@ -33,31 +33,38 @@ public class Main {
     }
 
     public static void Menu(){
-
-        try{
-            System.out.println("Benvingut a JavaCar\n" +
-                                       "1-Registrar-se\n" +
-                                       "2-Log-in");
-            int option = input.nextInt();
-            input.next();
-            switch (option){
-                case 1:
-                    dh.RegisterUser();
-                    Menu();
-                    break;
-                case 2:
-                    if (dh.Login()){
-                        System.out.println("succesfull Login");
-                    }else{
+        boolean program = true;
+        while(program){
+            try{
+                System.out.println("Benvingut a JavaCar\n" +
+                                           "1-Registrar-se\n" +
+                                           "2-Log-in\n" +
+                                           "3-Sortir");
+                int option = input.nextInt();
+                input.reset();
+                switch (option){
+                    case 1:
+                        dh.RegisterUser();
                         Menu();
-                    }
-                    break;
-                default:
-                    System.out.println("Opció no valida");
+                        break;
+                    case 2:
+                        if (dh.Login()){
+                            System.out.println("succesfull Login");
+                        }else{
+                            Menu();
+                        }
+                        break;
+                    case 3:
+                        program = false;
+                        break;
+                    default:
+                        System.out.println("Opció no valida");
+                }
+            }catch (InputMismatchException e){
+                System.out.println(e.toString());
             }
-        }catch (InputMismatchException e){
-            System.out.println(e.toString());
         }
+
 
     }
 

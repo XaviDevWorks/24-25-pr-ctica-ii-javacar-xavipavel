@@ -71,11 +71,12 @@ public class DataHandlers {
 
 
     public void RegisterUser(){
+        System.out.println("Register Triggered");
         File registration = new File(auth);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(registration, true))) {
-            if (registration.exists()){
+            if (!registration.exists()){
                 System.out.println("Already a users file");
-            }else{
+            }else if (registration.exists()){
                 boolean registrationloop = true;
                 while (registrationloop){
                     System.out.println("Enter a User Name");
@@ -86,13 +87,16 @@ public class DataHandlers {
                     String passwd2 = input.nextLine();
                     if (passwd1.equals(passwd2)){
                         System.out.println("Creating user "+ username);
+                        //writer.newLine();
                         writer.write(username+"|"+passwd1.hashCode());
+                        writer.newLine();
                         registrationloop=false;
                     }else{
                         System.out.println("User or password are wrong");
                     }
                 }
             }
+            writer.close();
         }catch(FileNotFoundException e){
             System.out.println("File not found");
         } catch (IOException e){
@@ -105,20 +109,30 @@ public class DataHandlers {
     public boolean Login(){
         File registration = new File(auth);
         try (BufferedReader br = new BufferedReader(new FileReader(registration))) {
-            boolean userfound = false;
-            System.out.println("Enter your UserName");
-            String username = input.nextLine();
-            System.out.println("Enter your Password");
-            String passwd = input.nextLine();
-            while (br.readLine() != null){
-                String[] line = br.readLine().split("|");
-                if (line[0].equals(username) && line[1].equals(passwd.hashCode())){
-                    userfound = true;
-                    break;
-                }
+            if(registration.exists()){
+                boolean userfound = false;
+                System.out.println("Enter your UserName");
+                String username = input.nextLine();
+                System.out.println("Enter your Password");
+                String passwd = input.nextLine();
+                passwd = String.valueOf(passwd.hashCode());
+                String Line;
+                while ((Line = br.readLine()) != null){
+                    String[] line = Line.split("\\|");
+                    String aux = line[1];
+                    if (line[0].equals(username) && (aux.equals(passwd))){
+                        userfound = true;
+                        break;
+                    }
 
+                }
+                br.close();
+                return userfound;
+            }else{
+                registration.createNewFile();
+                Login();
             }
-            return userfound;
+
         }catch(FileNotFoundException e){
             System.out.println("File not found");
         } catch (IOException e){
