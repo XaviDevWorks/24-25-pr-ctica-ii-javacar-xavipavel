@@ -1,6 +1,7 @@
 package org.JavaCar;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -55,18 +56,95 @@ public class DataHandlers {
 
     }
 
-    public void loadStock() {
-        File cochesStock = new File(projectURL);
+    public List<Vehicle> loadStock() {
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+
         try (BufferedReader br = new BufferedReader(new FileReader(projectURL))) {
-            while(br.readLine() != null){
+            String line;
+            String type = "", matricula = "", marca = "", model = "";
+            double preuBase = 0;
+            String tipusMotor = "";
+            int potenciaMotor = 0;
+            String rodaMarca = "";
+            double rodaDiametre = 0;
+            int capacitatCarga = 0, nombrePlaces = 0, cilindrada = 0;
+            List<Roda> rodes = new ArrayList<>();
+
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(": ");
+                if (line.isEmpty()) { // Nueva entrada de vehículo
+                    Motor motor = new Motor(tipusMotor, potenciaMotor);
+                    Vehicle vehicle = null;
+
+                    switch (type) {
+                        case "Furgoneta":
+                            vehicle = new Furgoneta(matricula, marca, model, preuBase, capacitatCarga, motor, rodes.toArray(new Roda[0]));
+                            break;
+                        case "Cotxe":
+                            vehicle = new Cotxe(matricula, marca, model, preuBase, nombrePlaces, motor, rodes.toArray(new Roda[0]));
+                            break;
+                        case "Moto":
+                            vehicle = new Moto(matricula, marca, model, preuBase, cilindrada, motor, rodes.toArray(new Roda[0]));
+                            break;
+                    }
+
+                    if (vehicle != null) {
+                        vehicles.add(vehicle);
+                    }
+
+                    // Reset variables
+                    matricula = ""; marca = ""; model = ""; preuBase = 0;
+                    tipusMotor = ""; potenciaMotor = 0; rodes.clear();
+                    capacitatCarga = 0; nombrePlaces = 0; cilindrada = 0;
+                }
+
+                switch (parts[0].trim()) {
+                    case "Vehicle":
+                        type = parts[1].trim();
+                        break;
+                    case "Matricula":
+                        matricula = parts[1].trim();
+                        break;
+                    case "Marca":
+                        marca = parts[1].trim();
+                        break;
+                    case "Model":
+                        model = parts[1].trim();
+                        break;
+                    case "PreuBase":
+                        preuBase = Double.parseDouble(parts[1].trim());
+                        break;
+                    case "Tipus(Motor)":
+                        tipusMotor = parts[1].trim();
+                        break;
+                    case "Potencia(Motor)":
+                        potenciaMotor = Integer.parseInt(parts[1].trim());
+                        break;
+                    case "Roda(marca)":
+                        rodaMarca = parts[1].trim();
+                        break;
+                    case "Roda(Diametre)":
+                        rodaDiametre = Double.parseDouble(parts[1].trim());
+                        rodes.add(new Roda(rodaMarca, rodaDiametre));
+                        break;
+                    case "Capacitat MAX":
+                        capacitatCarga = Integer.parseInt(parts[1].trim());
+                        break;
+                    case "Nº Plaçes":
+                        nombrePlaces = Integer.parseInt(parts[1].trim());
+                        break;
+                    case "Cilindrada":
+                        cilindrada = Integer.parseInt(parts[1].trim());
+                        break;
+                }
+
 
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error llegint el fitxer: " + e.getMessage());
         }
 
+        return vehicles;
     }
 
 

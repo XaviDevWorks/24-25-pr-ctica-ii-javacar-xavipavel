@@ -28,7 +28,10 @@ public class Main {
             System.out.println("Vehicle type: " + vehicle.getClass().getName());
         }
         dth.saveStock(aux);
+
          */
+
+        List<Vehicle> si = dh.loadStock();
         Menu();
     }
 
