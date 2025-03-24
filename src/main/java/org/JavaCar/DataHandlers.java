@@ -305,4 +305,45 @@ public class DataHandlers {
 
         return new Cotxe(matr, marca, model, preu, places, motor, rodes);
     }
+    public static Moto crearMoto() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Introduce la matrícula: ");
+        String matr = input.nextLine();
+
+        System.out.print("Introduce la marca: ");
+        String marca = input.nextLine();
+
+        System.out.print("Introduce el modelo: ");
+        String model = input.nextLine();
+
+        System.out.print("Introduce el precio base: ");
+        double preu = input.nextDouble();
+
+        System.out.print("Introduce la cilindrada: ");
+        int cilindrada = input.nextInt();
+        input.nextLine(); // Consumir nueva línea
+
+        System.out.print("Introduce el tipo de motor: ");
+        String tipusMotor = input.nextLine();
+
+        System.out.print("Introduce la potencia del motor: ");
+        int potenciaMotor = input.nextInt();
+        input.nextLine(); // Consumir nueva línea
+
+        Motor motor = new Motor(tipusMotor, potenciaMotor);
+
+        Roda[] rodes = new Roda[2];
+        for (int i = 0; i < 2; i++) {
+            System.out.println("Introduce los datos de la rueda " + (i + 1) + ":");
+            System.out.print("Marca: ");
+            String marcaRoda = input.nextLine();
+            System.out.print("Diámetro: ");
+            double diametreRoda = input.nextDouble();
+            input.nextLine(); // Consumir nueva línea
+            rodes[i] = new Roda(marcaRoda, diametreRoda);
+        }
+
+        return new Moto(matr, marca, model, preu, cilindrada, motor, rodes);
+    }
 }

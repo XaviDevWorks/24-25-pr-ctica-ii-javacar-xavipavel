@@ -86,5 +86,18 @@ Roda(marca): si
 Roda(Diametre): 4.0
 Roda(marca): si
 Roda(Diametre): 4.0
-Nº Plaçes:3
+Nº Plaçes:0
+
+Vehicle: Moto
+Matricula: no
+Marca: no
+Model: no
+PreuBase: 500
+Tipus(Motor): Diesel
+Potencia(Motor): 500
+Roda(marca): no
+Roda(Diametre): 4.0
+Roda(marca): no
+Roda(Diametre): 4.0
+Cilindrada:500
 

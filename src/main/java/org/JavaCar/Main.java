@@ -162,7 +162,7 @@ public class Main {
                         inventory.add(dh.crearCotxe());
                         break;
                     case 3:
-                        inventory.add(dh.crearFurgoneta());
+                        inventory.add(dh.crearMoto());
                         break;
                     case 4:
                         dh.saveStock(inventory);
