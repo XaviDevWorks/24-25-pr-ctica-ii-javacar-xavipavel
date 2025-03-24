@@ -9,6 +9,7 @@ public class Main {
     public static Scanner input = new Scanner(System.in);
     public static DataHandlers dh = new DataHandlers();
     public static String loggedUser="";
+    public static  List<Vehicle> inventory = new ArrayList<>();
     public static void main(String[] args) {
         /*
         DataHandlers dth = new DataHandlers();
@@ -32,6 +33,9 @@ public class Main {
          */
 
         List<Vehicle> si = dh.loadStock();
+        for(Vehicle v : si){
+            inventory.add(v);
+        }
         Menu();
     }
 
@@ -58,7 +62,7 @@ public class Main {
                             System.out.println("succesfull Login");
                             System.out.println("Wellecome user "+ (String) res[1]);
                             if(loggedUser.equals("admin")){
-
+                                ADM_logged_Menu();
                             }else{
                                 User_logged_Menu();
                             }
@@ -85,7 +89,8 @@ public class Main {
         while (program){
             try{
                 System.out.println("1-Comprar Vehicle\n" +
-                                           "2-Llogar Vehicle");
+                                           "2-Llogar Vehicle\n" +
+                                           "3-Sortir");
                 input.reset();
                 int option = input.nextInt();
                 switch (option){
@@ -93,6 +98,9 @@ public class Main {
 
                         break;
                     case 2:
+                        break;
+                    case 3:
+                        Menu();
                         break;
                     default:
                         System.out.println("Invalid option");
@@ -107,5 +115,66 @@ public class Main {
 
     }
 
+    public static void ADM_logged_Menu(){
+        boolean program = true;
+        while (program){
+            try{
+                System.out.println("1-Registrar Vehicle\n" +
+                                           "2-Revisio de ventes\n" +
+                                           "3-Sortir");
+                input.reset();
+                int option = input.nextInt();
+                switch (option){
+                    case 1:
+                        ADM_vehicle_registre_submenu();
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        Menu();
+                        break;
+                    default:
+                        System.out.println("Invalid option");
+                }
+            }catch (InputMismatchException e){
+                System.out.println("wrong data entered");
+            }
 
+
+        }
+    }
+
+    public static void ADM_vehicle_registre_submenu(){
+        boolean program = true;
+        while (program){
+            try{
+                System.out.println("1-Registrar Furgoneta\n" +
+                                           "2-Registrar Cotxe\n" +
+                                           "3-Registrar Moto\n" +
+                                           "4-Sortir");
+                input.reset();
+                int option = input.nextInt();
+                switch (option){
+                    case 1:
+                        inventory.add(dh.crearFurgoneta());
+                        break;
+                    case 2:
+                        inventory.add(dh.crearCotxe());
+                        break;
+                    case 3:
+                        inventory.add(dh.crearMoto());
+                        break;
+                    case 4:
+                        dh.saveStock(inventory);
+                        ADM_logged_Menu();
+                    default:
+                        System.out.println("Invalid option");
+                }
+            }catch (InputMismatchException e){
+                System.out.println("wrong data entered");
+            }
+
+
+        }
+    }
 }
