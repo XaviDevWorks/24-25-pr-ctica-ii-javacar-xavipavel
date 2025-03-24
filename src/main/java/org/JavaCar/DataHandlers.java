@@ -5,11 +5,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * La clase {@code DataHandlers} se encarga de gestionar la persistencia de datos de vehículos
+ * y la autenticación de usuarios. Proporciona métodos para guardar y cargar el stock de vehículos,
+ * así como para registrar y autenticar usuarios.
+ *
+ * <p>Adicionalmente, ofrece métodos estáticos para crear instancias de {@code Furgoneta}, {@code Cotxe} y {@code Moto}
+ * mediante la entrada de datos por consola.</p>
+ */
 public class DataHandlers {
+    /** Ruta del archivo donde se almacena el stock de vehículos. */
     String projectURL = "src/main/java/org/JavaCar/carStock.txt";
+
+    /** Ruta del archivo de autenticación de usuarios. */
     String auth = "src/main/java/org/JavaCar/auth.txt";
+
+    /** Objeto Scanner para leer la entrada por consola. */
     static Scanner input = new Scanner(System.in);
 
+    /**
+     * Guarda en un archivo el listado de vehículos pasados como parámetro.
+     * Si el archivo no existe, se crea. En caso de que ya exista, se elimina y se vuelve a crear.
+     *
+     * <p>Para cada vehículo, se escribe en el archivo su tipo, sus atributos principales y los atributos
+     * específicos de cada subclase (Furgoneta, Cotxe, Moto).</p>
+     *
+     * @param vehicle Lista de objetos {@code Vehicle} a guardar.
+     */
     public void saveStock(List<Vehicle> vehicle) {
         File cochesStock = new File(projectURL);
         if (!cochesStock.exists()) {
@@ -26,21 +48,21 @@ public class DataHandlers {
                         writer.write("Vehicle: Furgoneta");
                         writer.newLine();
                         writer.write(i.printVehicle());
-                        writer.write("Capacitat MAX:"+furgoneta.getCapacitatCarga());
+                        writer.write("Capacitat MAX:" + furgoneta.getCapacitatCarga());
                         writer.newLine();
-                    }else if (i instanceof Cotxe){
+                    } else if (i instanceof Cotxe){
                         Cotxe cotxe = (Cotxe) i;
                         writer.write("Vehicle: Cotxe");
                         writer.newLine();
                         writer.write(i.printVehicle());
-                        writer.write("Nº Plaçes:"+cotxe.getNombrePlaces());
+                        writer.write("Nº Plaçes:" + cotxe.getNombrePlaces());
                         writer.newLine();
-                    }else if(i instanceof Moto){
+                    } else if(i instanceof Moto){
                         Moto moto = (Moto) i;
                         writer.write("Vehicle: Moto");
                         writer.newLine();
                         writer.write(i.printVehicle());
-                        writer.write("Cilindrada:"+moto.getCilindrada());
+                        writer.write("Cilindrada:" + moto.getCilindrada());
                         writer.newLine();
                     }
                     writer.newLine();
@@ -49,14 +71,20 @@ public class DataHandlers {
                     System.out.println("Ocurrió un error al escribir en el archivo: " + e.getMessage());
                 }
             }
-        }
-        else {
+        } else {
             cochesStock.delete();
             saveStock(vehicle);
         }
-
     }
 
+    /**
+     * Carga el stock de vehículos almacenado en el archivo y los devuelve como una lista.
+     *
+     * <p>El método lee el archivo línea a línea, parsea la información de cada vehículo
+     * y reconstruye los objetos correspondientes según el tipo (Furgoneta, Cotxe o Moto).</p>
+     *
+     * @return Lista de objetos {@code Vehicle} reconstruidos a partir del archivo.
+     */
     public List<Vehicle> loadStock() {
         ArrayList<Vehicle> vehicles = new ArrayList<>();
 
@@ -93,7 +121,7 @@ public class DataHandlers {
                         vehicles.add(vehicle);
                     }
 
-                    // Reset variables
+                    // Reiniciar variables para el siguiente vehículo
                     matricula = ""; marca = ""; model = ""; preuBase = 0;
                     tipusMotor = ""; potenciaMotor = 0; rodes.clear();
                     capacitatCarga = 0; nombrePlaces = 0; cilindrada = 0;
@@ -138,8 +166,6 @@ public class DataHandlers {
                         cilindrada = Integer.parseInt(parts[1].trim());
                         break;
                 }
-
-
             }
         } catch (IOException e) {
             System.out.println("Error llegint el fitxer: " + e.getMessage());
@@ -148,14 +174,19 @@ public class DataHandlers {
         return vehicles;
     }
 
-
+    /**
+     * Registra un nuevo usuario solicitando el nombre de usuario y contraseña por consola.
+     *
+     * <p>El método escribe el nombre de usuario y el hash de la contraseña en el archivo de autenticación.
+     * Si el archivo ya existe, se agregan los nuevos registros; en caso contrario, se muestra un mensaje informativo.</p>
+     */
     public void RegisterUser(){
         System.out.println("Register Triggered");
         File registration = new File(auth);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(registration, true))) {
             if (!registration.exists()){
                 System.out.println("Already a users file");
-            }else if (registration.exists()){
+            } else if (registration.exists()){
                 boolean registrationloop = true;
                 while (registrationloop){
                     System.out.println("Enter a User Name");
@@ -166,31 +197,40 @@ public class DataHandlers {
                     String passwd2 = input.nextLine();
                     if (passwd1.equals(passwd2)){
                         System.out.println("Creating user "+ username);
-                        //writer.newLine();
-                        writer.write(username+"|"+passwd1.hashCode());
+                        writer.write(username + "|" + passwd1.hashCode());
                         writer.newLine();
-                        registrationloop=false;
-                    }else{
+                        registrationloop = false;
+                    } else {
                         System.out.println("User or password are wrong");
                     }
                 }
             }
             writer.close();
-        }catch(FileNotFoundException e){
+        } catch(FileNotFoundException e) {
             System.out.println("File not found");
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e.toString());
-        } catch(Exception e){
+        } catch(Exception e) {
             System.out.println(e.toString());
         }
     }
 
+    /**
+     * Realiza el proceso de autenticación de usuario.
+     *
+     * <p>Solicita el nombre de usuario y la contraseña por consola y verifica las credenciales comparándolas
+     * con las almacenadas en el archivo de autenticación. Si el usuario se encuentra, retorna un arreglo
+     * con {@code true} y el nombre del usuario; de lo contrario, retorna {@code false} y una cadena vacía.</p>
+     *
+     * @return Un arreglo de {@code Object} donde el primer elemento es un {@code Boolean} que indica si el usuario fue encontrado,
+     *         y el segundo es un {@code String} con el nombre del usuario autenticado.
+     */
     public Object[] Login(){
         File registration = new File(auth);
         try (BufferedReader br = new BufferedReader(new FileReader(registration))) {
             if(registration.exists()){
                 boolean userfound = false;
-                String userLogged="";
+                String userLogged = "";
                 System.out.println("Enter your UserName");
                 String username = input.nextLine();
                 System.out.println("Enter your Password");
@@ -202,30 +242,35 @@ public class DataHandlers {
                     String aux = line[1];
                     if (line[0].equals(username) && (aux.equals(passwd))){
                         userfound = true;
-                        userLogged=username;
+                        userLogged = username;
                         break;
                     }
-
                 }
                 br.close();
-                return new Object[]{userfound,userLogged};
-            }else{
+                return new Object[]{userfound, userLogged};
+            } else {
                 registration.createNewFile();
                 Login();
             }
-
-        }catch(FileNotFoundException e){
+        } catch(FileNotFoundException e) {
             System.out.println("File not found");
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e.toString());
-        } catch(Exception e){
+        } catch(Exception e) {
             System.out.println(e.toString());
         }
-        return new Object[]{false,""};
+        return new Object[]{false, ""};
     }
 
+    /**
+     * Crea y retorna una nueva instancia de {@code Furgoneta} solicitando al usuario los datos por consola.
+     *
+     * <p>Se solicitan datos generales del vehículo, así como los atributos específicos de una furgoneta,
+     * incluyendo la información de cada rueda.</p>
+     *
+     * @return Una instancia de {@code Furgoneta} con los datos proporcionados por el usuario.
+     */
     public static Furgoneta crearFurgoneta() {
-
         System.out.print("Introduce la matrícula: ");
         String matr = input.nextLine();
         input.reset();
@@ -248,7 +293,6 @@ public class DataHandlers {
         System.out.print("Introduce la potencia del motor: ");
         int potenciaMotor = input.nextInt();
         input.nextLine(); // Consumir nueva línea
-        input.reset();
         Motor motor = new Motor(tipusMotor, potenciaMotor);
 
         Roda[] rodes = new Roda[4];
@@ -266,6 +310,14 @@ public class DataHandlers {
         return new Furgoneta(matr, marca, model, preu, carga, motor, rodes);
     }
 
+    /**
+     * Crea y retorna una nueva instancia de {@code Cotxe} solicitando al usuario los datos por consola.
+     *
+     * <p>Se solicitan datos generales del vehículo, así como los atributos específicos de un coche,
+     * incluyendo la información de cada rueda.</p>
+     *
+     * @return Una instancia de {@code Cotxe} con los datos proporcionados por el usuario.
+     */
     public static Cotxe crearCotxe() {
         System.out.print("Introduce la matrícula: ");
         String matr = input.nextLine();
@@ -305,6 +357,15 @@ public class DataHandlers {
 
         return new Cotxe(matr, marca, model, preu, places, motor, rodes);
     }
+
+    /**
+     * Crea y retorna una nueva instancia de {@code Moto} solicitando al usuario los datos por consola.
+     *
+     * <p>Se solicitan datos generales del vehículo, así como los atributos específicos de una moto,
+     * incluyendo la información de cada rueda.</p>
+     *
+     * @return Una instancia de {@code Moto} con los datos proporcionados por el usuario.
+     */
     public static Moto crearMoto() {
         Scanner input = new Scanner(System.in);
 
