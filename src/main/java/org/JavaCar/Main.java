@@ -58,7 +58,7 @@ public class Main {
                             System.out.println("succesfull Login");
                             System.out.println("Wellecome user "+ (String) res[1]);
                             if(loggedUser.equals("admin")){
-
+                                ADM_logged_Menu();
                             }else{
                                 User_logged_Menu();
                             }
@@ -85,7 +85,8 @@ public class Main {
         while (program){
             try{
                 System.out.println("1-Comprar Vehicle\n" +
-                                           "2-Llogar Vehicle");
+                                           "2-Llogar Vehicle\n" +
+                                           "3-Sortir");
                 input.reset();
                 int option = input.nextInt();
                 switch (option){
@@ -93,6 +94,9 @@ public class Main {
 
                         break;
                     case 2:
+                        break;
+                    case 3:
+                        Menu();
                         break;
                     default:
                         System.out.println("Invalid option");
@@ -107,5 +111,32 @@ public class Main {
 
     }
 
+    public static void ADM_logged_Menu(){
+        boolean program = true;
+        while (program){
+            try{
+                System.out.println("1-Registrar Vehicle\n" +
+                                           "2-Revisio de ventes\n" +
+                                           "3-Sortir");
+                input.reset();
+                int option = input.nextInt();
+                switch (option){
+                    case 1:
 
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        Menu();
+                        break;
+                    default:
+                        System.out.println("Invalid option");
+                }
+            }catch (InputMismatchException e){
+                System.out.println("wrong data entered");
+            }
+
+
+        }
+    }
 }
