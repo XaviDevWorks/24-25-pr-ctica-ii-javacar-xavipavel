@@ -1,4 +1,77 @@
 Vehicle: Furgoneta
+Matricula: 5566PQR
+Marca: Iveco
+Model: Daily
+PreuBase: 55
+Tipus(Motor): GASOLINA
+Potencia(Motor): 120
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Capacitat MAX:0
+
+Vehicle: Furgoneta
+Matricula: 3344MNO
+Marca: Mercedes
+Model: Vito
+PreuBase: 50
+Tipus(Motor): GASOLINA
+Potencia(Motor): 120
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Capacitat MAX:0
+
+Vehicle: Cotxe
+Matricula: 1234ABC
+Marca: Toyota
+Model: Corolla
+PreuBase: 30
+Tipus(Motor): GASOLINA
+Potencia(Motor): 120
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Nº Plaçes:0
+
+Vehicle: Moto
+Matricula: 5678DEF
+Marca: Yamaha
+Model: R6
+PreuBase: 25
+Tipus(Motor): GASOLINA
+Potencia(Motor): 80
+Roda(marca): Pirelli
+Roda(Diametre): 16.0
+Roda(marca): Pirelli
+Roda(Diametre): 16.0
+Cilindrada:0
+
+Vehicle: Furgoneta
+Matricula: 3344MNA
+Marca: Mircedes
+Model: Fake
+PreuBase: 1500
+Tipus(Motor): Gasolina
+Potencia(Motor): 500
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin 17
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Capacitat MAX:0
+
+Vehicle: Cotxe
 Matricula: si
 Marca: si
 Model: si
@@ -6,12 +79,24 @@ PreuBase: 500
 Tipus(Motor): Gasolina
 Potencia(Motor): 500
 Roda(marca): si
-Roda(Diametre): 2.0
-Roda(marca): is
 Roda(Diametre): 4.0
 Roda(marca): si
-Roda(Diametre): 5.0
+Roda(Diametre): 4.0
 Roda(marca): si
-Roda(Diametre): 5.0
-Capacitat MAX:1500
+Roda(Diametre): 4.0
+Roda(marca): si
+Roda(Diametre): 4.0
+Nº Plaçes:0
 
+Vehicle: Moto
+Matricula: no
+Marca: no
+Model: no
+PreuBase: 500
+Tipus(Motor): Diesel
+Potencia(Motor): 500
+Roda(marca): no
+Roda(Diametre): 4.0
+Roda(marca): no
+Roda(Diametre): 4.0
+Cilindrada:500

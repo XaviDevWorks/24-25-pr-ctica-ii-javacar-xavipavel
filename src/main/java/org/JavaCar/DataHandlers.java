@@ -1,7 +1,9 @@
 package org.JavaCar;
 
+import javax.swing.colorchooser.ColorChooserComponentFactory;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -406,5 +408,81 @@ public class DataHandlers {
         }
 
         return new Moto(matr, marca, model, preu, cilindrada, motor, rodes);
+    }
+
+    public static void llistarInventari(List<Vehicle> inventari){
+        for(Vehicle v : inventari){
+            if (v instanceof Furgoneta){
+                Furgoneta furgo = (Furgoneta)v;
+                v.printVehicle();
+                System.out.println(furgo.getCapacitatCarga());
+            }else if (v instanceof Cotxe){
+                Cotxe cotxe = (Cotxe) v;
+                v.printVehicle();
+                System.out.println(cotxe.getNombrePlaces());
+            }else if (v instanceof Moto){
+                Moto moto = (Moto) v;
+                v.printVehicle();
+                System.out.println(moto.getCilindrada());
+            }
+        }
+    }
+
+    public static Vehicle searchVehicle(List<Vehicle> inventory,String matr){
+        for (Vehicle v : inventory){
+            if (v.getMatricula().equals(matr)){
+                return v;
+            }
+        }
+        return null;
+    }
+
+    public void compra(int option,Vehicle vehicle){
+        Furgoneta auxFurgo = null;
+        Moto auxMoto = null;
+        Cotxe auxCotxe = null;
+        int dies=0;
+        if (vehicle instanceof Furgoneta){
+            auxFurgo = (Furgoneta) vehicle;
+        }else if(vehicle instanceof Moto){
+            auxMoto = (Moto)vehicle;
+        }else if(vehicle instanceof Cotxe){
+            auxCotxe = (Cotxe)vehicle;
+        }
+
+        if (option == 1){ //comprar
+            System.out.println("ESPECIFICACIONS DEL VEHICLE\n\n\n");
+            vehicle.printVehicle();
+            if (auxFurgo == null){
+                System.out.println("Capacitat MAX: "+auxFurgo.getCapacitatCarga());
+            }else if (auxMoto != null){
+                System.out.println("Cilindrada: "+auxMoto.getCilindrada());
+            }else if (auxCotxe != null){
+                System.out.println("Nº Plaçes: "+auxCotxe.getNombrePlaces());
+            }
+            System.out.println("\n\n\n QUANTITAT A PAGAR:"+ vehicle.getPreuBase());
+        }else { // llogar
+            try{
+                System.out.println("Per cuants dies vols llogar el vehicle?");
+                dies = input.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("No es un numero");
+            }
+            System.out.println("ESPECIFICACIONS DEL VEHICLE\n\n\n");
+            vehicle.printVehicle();
+            if (auxFurgo != null){
+                System.out.println("Capacitat MAX: "+auxFurgo.getCapacitatCarga());
+                System.out.println("\n\n\n QUANTITAT A PAGAR:"+ auxFurgo.calcularPreu(dies));
+            }else if (auxMoto != null){
+                System.out.println("Cilindrada: "+auxMoto.getCilindrada());
+                System.out.println("\n\n\n QUANTITAT A PAGAR:"+ auxMoto.calcularPreu(dies));
+            }else{
+                System.out.println("Nº Plaçes: "+auxCotxe.getNombrePlaces());
+                System.out.println("\n\n\n QUANTITAT A PAGAR:"+ auxCotxe.calcularPreu(dies));
+            }
+
+
+
+        }
     }
 }

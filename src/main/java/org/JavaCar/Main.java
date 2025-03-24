@@ -86,18 +86,29 @@ public class Main {
 
     public static void User_logged_Menu(){
         boolean program = true;
+        String matr;
         while (program){
             try{
                 System.out.println("1-Comprar Vehicle\n" +
                                            "2-Llogar Vehicle\n" +
                                            "3-Sortir");
-                input.reset();
                 int option = input.nextInt();
+                input.nextLine();
                 switch (option){
                     case 1:
-
+                        dh.llistarInventari(inventory);
+                        System.out.println("INTRODUEIX LA MATRICULA DEL VEHICLE:");
+                        matr = input.nextLine();
+                        Vehicle vehicle = dh.searchVehicle(inventory,matr);
+                        dh.compra(1,vehicle);
                         break;
                     case 2:
+                        dh.llistarInventari(inventory);
+                        System.out.println("INTRODUEIX LA MATRICULA DEL VEHICLE:");
+                        matr = input.nextLine();
+                        input.reset();
+                        Vehicle si = dh.searchVehicle(inventory,matr);
+                        dh.compra(2,si);
                         break;
                     case 3:
                         Menu();
