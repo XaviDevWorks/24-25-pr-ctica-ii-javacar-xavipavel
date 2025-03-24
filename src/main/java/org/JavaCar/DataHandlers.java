@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class DataHandlers {
     String projectURL = "src/main/java/org/JavaCar/carStock.txt";
     String auth = "src/main/java/org/JavaCar/auth.txt";
-    Scanner input = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
 
     public void saveStock(List<Vehicle> vehicle) {
         File cochesStock = new File(projectURL);
@@ -51,7 +51,8 @@ public class DataHandlers {
             }
         }
         else {
-            System.out.println("Already a stock registry");
+            cochesStock.delete();
+            saveStock(vehicle);
         }
 
     }
@@ -221,5 +222,47 @@ public class DataHandlers {
             System.out.println(e.toString());
         }
         return new Object[]{false,""};
+    }
+
+    public static Furgoneta crearFurgoneta() {
+
+        System.out.print("Introduce la matrícula: ");
+        String matr = input.nextLine();
+        input.reset();
+        System.out.print("Introduce la marca: ");
+        String marca = input.nextLine();
+        input.reset();
+        System.out.print("Introduce el modelo: ");
+        String model = input.nextLine();
+        input.reset();
+        System.out.print("Introduce el precio base: ");
+        double preu = input.nextDouble();
+        input.reset();
+        System.out.print("Introduce la capacidad de carga: ");
+        int carga = input.nextInt();
+        input.nextLine(); // Consumir nueva línea
+        input.reset();
+        System.out.print("Introduce el tipo de motor: ");
+        String tipusMotor = input.nextLine();
+        input.reset();
+        System.out.print("Introduce la potencia del motor: ");
+        int potenciaMotor = input.nextInt();
+        input.nextLine(); // Consumir nueva línea
+        input.reset();
+        Motor motor = new Motor(tipusMotor, potenciaMotor);
+
+        Roda[] rodes = new Roda[4];
+        for (int i = 0; i < 4; i++) {
+            System.out.println("Introduce los datos de la rueda " + (i + 1) + ":");
+            System.out.print("Marca: ");
+            String marcaRoda = input.nextLine();
+            input.reset();
+            System.out.print("Diámetro: ");
+            double diametreRoda = input.nextDouble();
+            input.nextLine(); // Consumir nueva línea
+            rodes[i] = new Roda(marcaRoda, diametreRoda);
+        }
+
+        return new Furgoneta(matr, marca, model, preu, carga, motor, rodes);
     }
 }

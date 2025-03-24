@@ -9,6 +9,7 @@ public class Main {
     public static Scanner input = new Scanner(System.in);
     public static DataHandlers dh = new DataHandlers();
     public static String loggedUser="";
+    public static  List<Vehicle> inventory = new ArrayList<>();
     public static void main(String[] args) {
         /*
         DataHandlers dth = new DataHandlers();
@@ -32,6 +33,9 @@ public class Main {
          */
 
         List<Vehicle> si = dh.loadStock();
+        for(Vehicle v : si){
+            inventory.add(v);
+        }
         Menu();
     }
 
@@ -122,13 +126,46 @@ public class Main {
                 int option = input.nextInt();
                 switch (option){
                     case 1:
-
+                        ADM_vehicle_registre_submenu();
                         break;
                     case 2:
                         break;
                     case 3:
                         Menu();
                         break;
+                    default:
+                        System.out.println("Invalid option");
+                }
+            }catch (InputMismatchException e){
+                System.out.println("wrong data entered");
+            }
+
+
+        }
+    }
+
+    public static void ADM_vehicle_registre_submenu(){
+        boolean program = true;
+        while (program){
+            try{
+                System.out.println("1-Registrar Furgoneta\n" +
+                                           "2-Registrar Cotxe\n" +
+                                           "3-Registrar Moto\n" +
+                                           "4-Sortir");
+                input.reset();
+                int option = input.nextInt();
+                switch (option){
+                    case 1:
+                        inventory.add(dh.crearFurgoneta());
+                        dh.saveStock(inventory);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+
+                        break;
+                    case 4:
+                        ADM_logged_Menu();
                     default:
                         System.out.println("Invalid option");
                 }

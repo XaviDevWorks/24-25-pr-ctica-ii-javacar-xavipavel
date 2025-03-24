@@ -9,7 +9,7 @@ Roda(marca): Michelin
 Roda(Diametre): 17.0
 Roda(marca): Michelin
 Roda(Diametre): 17.0
-Capacitat MAX:1200
+Capacitat MAX:0
 
 Vehicle: Furgoneta
 Matricula: 3344MNO
@@ -22,7 +22,7 @@ Roda(marca): Michelin
 Roda(Diametre): 17.0
 Roda(marca): Michelin
 Roda(Diametre): 17.0
-Capacitat MAX:900
+Capacitat MAX:0
 
 Vehicle: Cotxe
 Matricula: 1234ABC
@@ -39,7 +39,7 @@ Roda(marca): Michelin
 Roda(Diametre): 17.0
 Roda(marca): Michelin
 Roda(Diametre): 17.0
-Nº Plaçes:5
+Nº Plaçes:0
 
 Vehicle: Moto
 Matricula: 5678DEF
@@ -52,5 +52,22 @@ Roda(marca): Pirelli
 Roda(Diametre): 16.0
 Roda(marca): Pirelli
 Roda(Diametre): 16.0
-Cilindrada:600
+Cilindrada:0
+
+Vehicle: Furgoneta
+Matricula: 3344MNA
+Marca: Mircedes
+Model: Fake
+PreuBase: 1500
+Tipus(Motor): Gasolina
+Potencia(Motor): 500
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin 17
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Roda(marca): Michelin
+Roda(Diametre): 17.0
+Capacitat MAX:1500
 
