@@ -157,14 +157,15 @@ public class Main {
                 switch (option){
                     case 1:
                         inventory.add(dh.crearFurgoneta());
-                        dh.saveStock(inventory);
                         break;
                     case 2:
+                        inventory.add(dh.crearCotxe());
                         break;
                     case 3:
-
+                        inventory.add(dh.crearFurgoneta());
                         break;
                     case 4:
+                        dh.saveStock(inventory);
                         ADM_logged_Menu();
                     default:
                         System.out.println("Invalid option");

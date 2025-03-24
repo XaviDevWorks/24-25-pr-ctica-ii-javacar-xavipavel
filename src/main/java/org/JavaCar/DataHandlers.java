@@ -265,4 +265,44 @@ public class DataHandlers {
 
         return new Furgoneta(matr, marca, model, preu, carga, motor, rodes);
     }
+
+    public static Cotxe crearCotxe() {
+        System.out.print("Introduce la matrícula: ");
+        String matr = input.nextLine();
+
+        System.out.print("Introduce la marca: ");
+        String marca = input.nextLine();
+
+        System.out.print("Introduce el modelo: ");
+        String model = input.nextLine();
+
+        System.out.print("Introduce el precio base: ");
+        double preu = input.nextDouble();
+
+        System.out.print("Introduce el número de plazas: ");
+        int places = input.nextInt();
+        input.nextLine(); // Consumir nueva línea
+
+        System.out.print("Introduce el tipo de motor: ");
+        String tipusMotor = input.nextLine();
+
+        System.out.print("Introduce la potencia del motor: ");
+        int potenciaMotor = input.nextInt();
+        input.nextLine(); // Consumir nueva línea
+
+        Motor motor = new Motor(tipusMotor, potenciaMotor);
+
+        Roda[] rodes = new Roda[4];
+        for (int i = 0; i < 4; i++) {
+            System.out.println("Introduce los datos de la rueda " + (i + 1) + ":");
+            System.out.print("Marca: ");
+            String marcaRoda = input.nextLine();
+            System.out.print("Diámetro: ");
+            double diametreRoda = input.nextDouble();
+            input.nextLine(); // Consumir nueva línea
+            rodes[i] = new Roda(marcaRoda, diametreRoda);
+        }
+
+        return new Cotxe(matr, marca, model, preu, places, motor, rodes);
+    }
 }

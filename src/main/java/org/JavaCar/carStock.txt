@@ -69,5 +69,22 @@ Roda(marca): Michelin
 Roda(Diametre): 17.0
 Roda(marca): Michelin
 Roda(Diametre): 17.0
-Capacitat MAX:1500
+Capacitat MAX:0
+
+Vehicle: Cotxe
+Matricula: si
+Marca: si
+Model: si
+PreuBase: 500
+Tipus(Motor): Gasolina
+Potencia(Motor): 500
+Roda(marca): si
+Roda(Diametre): 4.0
+Roda(marca): si
+Roda(Diametre): 4.0
+Roda(marca): si
+Roda(Diametre): 4.0
+Roda(marca): si
+Roda(Diametre): 4.0
+Nº Plaçes:3
 
