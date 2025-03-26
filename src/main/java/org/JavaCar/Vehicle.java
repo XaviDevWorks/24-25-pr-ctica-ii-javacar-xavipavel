@@ -51,7 +51,8 @@ public abstract class Vehicle implements Llogable {
                                    "Model: "+getModel()+"\n" +
                                    "PreuBase: "+getPreuBase()+"\n" +
                                    "Tipus(Motor): "+Motor.getTipus()+"\n" +
-                                   "Potencia(Motor): "+Motor.getPotencia()+"\n";
+                                   "Potencia(Motor): "+Motor.getPotencia()+"\n" + 
+                                   "Etiqueta Ambiental: " + getEtiquetaAmbiental() + "\n";
         for (Roda i : Rodes){
             form+="Roda(marca): "+i.getMarca()+"\nRoda(Diametre): "+i.getDiametre()+"\n";
         }
