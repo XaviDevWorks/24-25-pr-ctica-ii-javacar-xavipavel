@@ -6,4 +6,7 @@ public class EtiquetaAmbiental {
         ECO,
         CERO
     }
+    public static TipoEtiqueta obtenerEtiqueta(Vehiculo vehiculo) {
+
+    }
 }
