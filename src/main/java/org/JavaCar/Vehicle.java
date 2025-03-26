@@ -41,6 +41,9 @@ public abstract class Vehicle implements Llogable {
     public double calcularPreu(int dies){
         return this.PreuBase*dies;
     }
+    public EtiquetaAmbiental.TipoEtiqueta getEtiquetaAmbiental() {
+        return EtiquetaAmbiental;
+    }
 
     public String printVehicle(){
         String form="Matricula: "+ getMatricula()+"\n" +
