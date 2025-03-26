@@ -80,8 +80,6 @@ public class Main {
                 System.out.println(e.toString());
             }
         }
-
-
     }
 
     public static void User_logged_Menu(){
@@ -122,8 +120,6 @@ public class Main {
 
 
         }
-
-
     }
 
     public static void ADM_logged_Menu(){
@@ -150,8 +146,6 @@ public class Main {
             }catch (InputMismatchException e){
                 System.out.println("wrong data entered");
             }
-
-
         }
     }
 
@@ -187,8 +181,6 @@ public class Main {
             }catch (InputMismatchException e){
                 System.out.println("wrong data entered");
             }
-
-
         }
     }
 }
