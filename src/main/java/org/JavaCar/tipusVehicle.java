@@ -7,4 +7,8 @@ public enum tipusVehicle {
     tipusVehicle(String tipo) {
         this.atr = tipo;
     }
+
+    public String getAtr() {
+        return atr;
+    }
 }
