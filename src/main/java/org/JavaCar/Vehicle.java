@@ -18,7 +18,6 @@ public abstract class Vehicle implements Llogable {
         this.Motor = Motor;
         this.Rodes = Rodes;
         //this.EtiquetaAmbiental = etiqueta;
-
     }
 
     public String getMatricula(){
