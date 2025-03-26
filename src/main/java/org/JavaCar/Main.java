@@ -186,8 +186,7 @@ public class Main {
             System.out.println("Marca: " + vehicle.getMarca());
             System.out.println("Modelo: " + vehicle.getModelo());
             System.out.println("Precio: " + vehicle.getPrecio() + "€");
-            
-            // Aquí llamamos a la clase EtiquetaAmbiental para obtener la etiqueta medioambiental
+
             EtiquetaAmbiental.TipoEtiqueta etiqueta = EtiquetaAmbiental.obtenerEtiqueta(vehicle);
             System.out.println("Etiqueta medioambiental: " + etiqueta);
 
