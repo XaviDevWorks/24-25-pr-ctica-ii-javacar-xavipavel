@@ -7,7 +7,7 @@ public abstract class Vehicle implements Llogable {
     protected double PreuBase;
     protected Motor Motor;
     protected Roda[] Rodes;
-    protected String EtiquetaAmbiental;
+    protected EtiquetaAmbiental.TipoEtiqueta EtiquetaAmbiental;
     protected boolean disponibilidad = true;
     
     public Vehicle(String Matr, String Marca, String Model, double preu,Motor Motor,Roda[] Rodes){
@@ -17,7 +17,7 @@ public abstract class Vehicle implements Llogable {
         this.PreuBase = preu;
         this.Motor = Motor;
         this.Rodes = Rodes;
-        //this.EtiquetaAmbiental = etiqueta;
+        this.EtiquetaAmbiental = etiqueta;
     }
 
     public String getMatricula(){
