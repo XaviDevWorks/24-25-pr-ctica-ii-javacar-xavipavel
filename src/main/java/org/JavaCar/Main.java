@@ -59,7 +59,7 @@ public class Main {
 
                         if ((boolean)res[0]){
                             loggedUser=(String)res[1];
-                            System.out.println("Succesfull Login");
+                            System.out.println("succesfull Login");
                             System.out.println("Wellecome user "+ (String) res[1]);
                             if(loggedUser.equals("admin")){
                                 ADM_logged_Menu();
